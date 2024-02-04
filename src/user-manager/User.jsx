@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 class User extends Component {
   render() {
-    const { user } = this.props;
+    const { user, deleteUser } = this.props;
     return (
       <tr>
         <td>{user.id}</td>
@@ -18,7 +18,12 @@ class User extends Component {
           >
             <i className="fa fa-pen"></i>
           </button>
-          <button className="btn btn-danger">
+          <button
+            className="btn btn-danger"
+            onClick={() => {
+              deleteUser(user.id);
+            }}
+          >
             <i className="fa fa-trash"></i>
           </button>
         </td>

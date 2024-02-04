@@ -18,7 +18,13 @@ class UserList extends Component {
           </thead>
           <tbody>
             {this.props.stateUserList.map((item) => {
-              return <User key={item.id} user={item} />;
+              return (
+                <User
+                  key={item.id}
+                  user={item}
+                  deleteUser={this.props.delete}
+                />
+              );
             })}
           </tbody>
         </table>

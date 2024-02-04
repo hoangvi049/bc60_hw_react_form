@@ -27,7 +27,9 @@ export const store = configureStore({
     ) => {
       if (action.type == "ADD") {
         state = [...state, action.payload];
-        console.log(action.payload);
+      }
+      if (action.type == "DELETE") {
+        state = action.payload;
       }
       return state;
     },

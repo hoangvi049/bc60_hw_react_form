@@ -13,9 +13,20 @@ class Home extends Component {
     };
     this.props.dispatch(action);
   };
-
+  handleDelete = (id) => {
+    const userList = [...this.props.stateUserList];
+    const userListFill = userList.filter((item) => {
+      return item.id !== id;
+    });
+    const action = {
+      type: "DELETE",
+      payload: userListFill,
+    };
+    if (window.confirm("Bạn có muốn xóa") === true) {
+      this.props.dispatch(action);
+    }
+  };
   render() {
-    console.log(this.props);
     return (
       <div className="container">
         <h4 className="display-4 text-center my-3 bg-dark text-white">
@@ -84,7 +95,10 @@ class Home extends Component {
             Thêm SV
           </button>
         </div>
-        <UserList stateUserList={this.props.stateUserList} />
+        <UserList
+          stateUserList={this.props.stateUserList}
+          delete={this.handleDelete}
+        />
       </div>
     );
   }
